@@ -10,8 +10,15 @@
                     </div>
                 </a>
 
-                <div class="card-body">
-                    <h4 class="card-title">{{produto.nome | titlecase}}</h4>
+                <h4 class="card-title">{{produto.nome | titlecase}}</h4>
+
+                <div *ngIf="produto.promocao" class="card-body">
+                    <div><h4 class="card-text">
+                        De: <small><del>{{produto.valor | currency:'BRL'}}</del></small>
+                        Por:{{produto.valorPromo | currency:'BRL'}}</h4></div>
+                </div>
+                
+                <div *ngIf="!produto.promocao" class="card-body">
                     <p>Por apenas:</p>
                     <div><h4>{{produto.valor | currency:'BRL'}}</h4></div>
                 </div>
